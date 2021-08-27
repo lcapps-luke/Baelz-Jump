@@ -27,7 +27,7 @@ class CreditsState extends FlxSubState {
 
 		var yAcc = title.height + 40;
 
-		var bae = new CreditLine("Hakos Bae");
+		var bae = new CreditLine("Hakos Baelz");
 		bae.addLink("https://www.youtube.com/channel/UCgmPnx-EEeOrZSg5Tiw7ZRQ", AssetPaths.yt_icon__png);
 		bae.addLink("https://twitter.com/hakosbaelz", AssetPaths.tw_icon__png);
 		bae.x = 40;
