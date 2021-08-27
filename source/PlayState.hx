@@ -1,5 +1,6 @@
 package;
 
+import credits.CreditsState;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -8,6 +9,7 @@ import flixel.effects.FlxFlicker;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import ui.TextButton;
 
 class PlayState extends FlxState {
 	private static inline var START_SPEED:Float = 1024;
@@ -59,7 +61,12 @@ class PlayState extends FlxState {
 		featureText = new FeatureText(440, 850);
 		add(featureText);
 
-		// FlxG.sound.playMusic(AssetPaths.bgm__ogg, 0.5);
+		var creds = new TextButton("CREDITS", 40, showCredits);
+		creds.x = 20;
+		creds.y = 970;
+		add(creds);
+
+		FlxG.sound.playMusic(AssetPaths.bgm__ogg, 0.5);
 	}
 
 	private function reset() {
@@ -114,5 +121,9 @@ class PlayState extends FlxState {
 		if (featureText.set != set && set < 3) {
 			featureText.set = set;
 		}
+	}
+
+	private function showCredits() {
+		this.openSubState(new CreditsState());
 	}
 }
