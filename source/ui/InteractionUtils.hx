@@ -5,10 +5,8 @@ import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import flixel.util.FlxDestroyUtil;
 
-class InteractionUtils
-{
-	public static function wasClicked(hitbox:FlxRect):Interaction
-	{
+class InteractionUtils {
+	public static function wasClicked(hitbox:FlxRect):Interaction {
 		var over = false;
 
 		#if !FLX_NO_MOUSE
@@ -16,8 +14,7 @@ class InteractionUtils
 		over = hitbox.containsPoint(pos);
 		FlxDestroyUtil.put(pos);
 
-		if (FlxG.mouse.justReleased && over)
-		{
+		if (FlxG.mouse.justReleased && over) {
 			return CLICK;
 		}
 		#end
@@ -25,8 +22,7 @@ class InteractionUtils
 		#if !FLX_NO_TOUCH
 		var touch = FlxG.touches.getFirst();
 
-		if (touch != null && touch.justReleased && hitbox.containsPoint(touch.getPosition()))
-		{
+		if (touch != null && touch.justReleased && hitbox.containsPoint(touch.getPosition())) {
 			return CLICK;
 		}
 		#end
@@ -34,18 +30,15 @@ class InteractionUtils
 		return over ? OVER : NONE;
 	}
 
-	public static function justClicked():Bool
-	{
+	public static function justClicked():Bool {
 		#if !FLX_NO_MOUSE
-		if (FlxG.mouse.justPressed)
-		{
+		if (FlxG.mouse.justPressed) {
 			return true;
 		}
 		#end
 
 		#if !FLX_NO_TOUCH
-		if (FlxG.touches.justStarted().length > 0)
-		{
+		if (FlxG.touches.justStarted().length > 0) {
 			return true;
 		}
 		#end
@@ -53,26 +46,29 @@ class InteractionUtils
 		return false;
 	}
 
-	public static function clickPoint():FlxPoint
-	{
+	public static function clickPoint():FlxPoint {
 		#if !FLX_NO_MOUSE
 		return FlxG.mouse.getPosition();
 		#end
 
 		#if !FLX_NO_TOUCH
 		var touch = FlxG.touches.justStarted();
-		if (touch.length > 0)
-		{
+		if (touch.length > 0) {
 			return touch[0].getPosition();
 		}
 		#end
 
 		return null;
 	}
+
+	public static function isHeld():Bool {
+		#if !FLX_NO_MOUSE
+		return FlxG.mouse.pressed;
+		#end
+	}
 }
 
-enum Interaction
-{
+enum Interaction {
 	OVER;
 	CLICK;
 	NONE;

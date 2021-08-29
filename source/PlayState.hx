@@ -10,6 +10,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import ui.TextButton;
+import ui.Volume;
 
 class PlayState extends FlxState {
 	private static inline var START_SPEED:Float = 1024;
@@ -65,6 +66,10 @@ class PlayState extends FlxState {
 		creds.x = 20;
 		creds.y = 970;
 		add(creds);
+
+		var volume = new Volume(40 + creds.width, 955, 960 - 40 - creds.width, creds.height);
+		add(volume);
+		volume.setVolume(0.5);
 
 		FlxG.sound.playMusic(AssetPaths.bgm__ogg, 0.5);
 	}
