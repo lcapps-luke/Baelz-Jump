@@ -3,7 +3,6 @@ package ui;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
-import flixel.math.FlxPoint;
 
 class Volume extends FlxSpriteGroup {
 	private var icon:ToggleButton;

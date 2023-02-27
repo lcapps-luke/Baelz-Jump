@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.input.actions.FlxAction.FlxActionDigital;
 import flixel.input.actions.FlxActionManager;
+import input.ActionInputDigitalTouch;
 
 class Bae extends FlxSprite {
 	private static inline var ANIM_RUN:String = "run";
@@ -24,6 +25,7 @@ class Bae extends FlxSprite {
 		jumpAction.addKey(ANY, JUST_PRESSED);
 		jumpAction.addMouse(LEFT, JUST_PRESSED);
 		jumpAction.addGamepad(ANY, JUST_PRESSED);
+		jumpAction.add(new ActionInputDigitalTouch(JUST_PRESSED));
 
 		FlxG.inputs.add(new FlxActionManager()).addAction(jumpAction);
 

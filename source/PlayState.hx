@@ -36,7 +36,6 @@ class PlayState extends FlxState {
 	override public function create() {
 		super.create();
 		bae = new Bae(818, 29);
-		bae.blend = NORMAL;
 		add(bae);
 
 		blockGroup = new FlxTypedGroup<Block>();
